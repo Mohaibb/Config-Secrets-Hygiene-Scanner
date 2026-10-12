@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  servicePrincipalSecret: 'p@ssw0rd-2024-dev'
+  storageAccountName: 'sampleprojinfst40101'
+
+stages:
+  - stage: Deploy
+    jobs:
+      - job: DeployInfra
+        steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: 'AZR-SAMPLE-DEV1'
+              scriptType: 'pscore'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                sqlcmd -S sampledb.database.windows.net -U sa -P "Temp1234!" -Q "SELECT 1"
+                # using devpassword123 until KV wired up - remove before merge
+                az storage account update --name $(storageAccountName) --min-tls-version TLS1_0
+
+          - task: AzureResourceManagerTemplateDeployment@3
+            inputs:
+              deploymentScope: 'Resource Group'
+              azureResourceManagerConnection: 'AZR-SAMPLE-DEV1'
+              resourceGroupName: 'sampleprojinfrgp40101'
+              location: 'UK South'
+              csmFile: 'infra/storage/storage.bicep'
+              csmParametersFile: 'infra/storage/storage.bicepparam'

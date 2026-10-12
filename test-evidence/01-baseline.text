@@ -1,0 +1,91 @@
+
+File         : appsettings.sample.json
+Location     : Network.PublicNetworkAccess
+RuleId       : RULE-002
+Rule         : Public network access must be disbaled
+Severity     : High
+Message      : Public network access is enabled
+SuggestedFix : Disable public network access
+
+File         : appsettings.sample.json
+Location     : Security.MinimumTlsVersion
+RuleId       : RULE-003
+Rule         : TLS minimum version must be >= 1.2
+Severity     : High
+Message      : Minimum TLS version is 1.0
+SuggestedFix : Set Security.MinimumTlsVersion to 1.2 or higher
+
+File         : appsettings.sample.json
+Location     : Ftp.Enabled
+RuleId       : RULE-005
+Rule         : FTP/FTPS must be disabled
+Severity     : High
+Message      : FTP is enabled
+SuggestedFix : Set Ftp.Enabled to false
+
+File         : appsettings.sample.json
+Location     : Debugging.RemoteDebuggingEnabled
+RuleId       : RULE-006
+Rule         : Remote debugging must be disabled
+Severity     : High
+Message      : Remote debugging is enabled
+SuggestedFix : Set Debugging.RemoteDebuggingEnabled to false
+
+File         : appsettings.sample.json
+Location     : Logging.SendToLogAnalytics
+RuleId       : RULE-008
+Rule         : Diagnostic logging must be enabled and sent to Log Analytics
+Severity     : Medium
+Message      : Diagnostic logging is not sent to Log Analytics
+SuggestedFix : Set Logging.SendToLogAnalytics to true
+
+File         : appsettings.sample.json
+Location     : ConnectionStrings.AuditDb
+RuleId       : RULE-001
+Rule         : No hardcoded secrets/passwords/API keys/connection string credentials
+Severity     : High
+Message      : Connection string contains a hardcoded password
+SuggestedFix : Move the password to Key Vault and reference it instead of hardcoding
+
+File         : appsettings.sample.json
+Location     : ApiKeys.ThirdPartyService
+RuleId       : RULE-001
+Rule         : No hardcoded secrets/passwords/API keys/connection string credentials
+Severity     : High
+Message      : API key is hardcoded in configuration
+SuggestedFix : Move the API key to Key Vault and reference it instead of hardcoding
+
+File         : azure-pipelines.sample.yml
+Location     : Line 7
+RuleId       : RULE-001
+Rule         : No hardcoded secrets/passwords/API keys/connection string credentials
+Severity     : High
+Message      : Potential hardcoded credential requiring review
+SuggestedFix : Move the value to a Key Vault-linked variable group instead of hardcoding
+
+File         : azure-pipelines.sample.yml
+Location     : Line 21
+RuleId       : RULE-001
+Rule         : No hardcoded secrets/passwords/API keys/connection string credentials
+Severity     : High
+Message      : Potential hardcoded credential requiring review
+SuggestedFix : Move the value to a Key Vault-linked variable group instead of hardcoding
+
+File         : azure-pipelines.sample.yml
+Location     : Line 22
+RuleId       : RULE-001
+Rule         : No hardcoded secrets/passwords/API keys/connection string credentials
+Severity     : High
+Message      : Potential hardcoded credential requiring review
+SuggestedFix : Move the value to a Key Vault-linked variable group instead of hardcoding
+
+File         : azure-pipelines.sample.yml
+Location     : Line 23
+RuleId       : RULE-003
+Rule         : TLS minimum version must be >= 1.2
+Severity     : High
+Message      : Minimum TLS version is below 1.2
+SuggestedFix : Set --min-tls-version to TLS1_2 or higher
+
+RULE-007 FTP: Not evaluated - setting missing (Publishing.FtpBasicAuthEnabled)
+RULE-007 SCM: Not evaluated - setting missing (Publishing.ScmBasicAuthEnabled)
